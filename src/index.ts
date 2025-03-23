@@ -10,9 +10,9 @@ const app = new App(routers, port)
 
 app.listen()
 
-const serverlessHandler = serverless(app.getExpressApp())
+// const serverlessHandler = serverless(app.getExpressApp())
 
-export const handler = async (event, context) => {
-  const result = await serverlessHandler(event, context)
-  return result
-}
+// export const handler = async (event, context) => {
+//   const result = await serverlessHandler(event, context)
+//   return result
+// }

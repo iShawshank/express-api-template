@@ -37,4 +37,4 @@ npm start
 ```
 
 For debugging, you can setup a basic debugger that just runs the start script.
-ex: for VS Code
+ex: for VS Code I have added a .vscode/launch.json file already
