@@ -1,6 +1,9 @@
 import * as express from 'express'
 import ExampleController from '../controllers/exampleController'
-import ExampleValidator from '../validators/exampleValidator'
+import {
+  validateRequest,
+} from '../validators/validateRequest'
+import { ExampleGetByIdSchema, ExampleBulkSchema } from '../schemas'
 
 export default class ExampleRouter {
   public expressRouter = express.Router()
@@ -14,12 +17,12 @@ export default class ExampleRouter {
   initalizeRoutes() {
     this.expressRouter.post(
       `${this.prefix}`,
-      ExampleValidator.validateSearchExamples,
+      validateRequest(ExampleBulkSchema),
       ExampleController.searchExamples
     )
     this.expressRouter.get(
       `${this.prefix}/:id`,
-      ExampleValidator.validateGetExample,
+      validateRequest(ExampleGetByIdSchema, 'query'),
       ExampleController.getExample
     )
   }

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx --watch --no-cache src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate:joi-types": "tsx ./scripts/generateJoiTypes.ts"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "@eslint/js": "^9.23.0",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
+    "joi-to-typescript": "^4.15.0",
     "prettier": "3.5.3",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
