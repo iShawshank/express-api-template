@@ -10,6 +10,13 @@
       "request": "launch",
       "command": "npm run start",
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "node-terminal",
+      "name": "Debug Swagger generation",
+      "request": "launch",
+      "command": "npm run generate:swagger",
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

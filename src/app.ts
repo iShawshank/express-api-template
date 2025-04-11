@@ -1,5 +1,7 @@
 import express, { type Router } from 'express'
 import { ContextMiddleware } from './middleware/context'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from '../docs/swagger.json'
 
 export default class App {
   private app: express.Application
@@ -11,6 +13,8 @@ export default class App {
 
     this.app.use(express.json())
     this.app.use(ContextMiddleware)
+    // Mount swagger UI locally
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
     this.initializeRouters('api', routers)
   }
 

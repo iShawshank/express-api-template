@@ -3,30 +3,6 @@
  * Do not modify this file manually
  */
 
-export interface GetExampleByID {
-  /**
-   * brand
-   *
-   * @example IAM
-   */
-  brand: string;
-}
-
-export interface GetExamplesByIds {
-  /**
-   * Optional brand filter to narrow down the search results. If provided, it will filter examples by this brand.
-   *
-   * @example IAM
-   */
-  brand?: string;
-  /**
-   * An array of unique identifiers for the examples to search.
-   *
-   * @example
-   * [
-   *   "12345",
-   *   "67890"
-   * ]
-   */
-  ids: string[];
-}
+export * from './exampleGetById';
+export * from './exampleSearch';
+export * from './response';

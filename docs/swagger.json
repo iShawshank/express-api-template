@@ -1,0 +1,392 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/example": {
+      "post": {
+        "summary": "Search examples by ids",
+        "description": "Retrieves an array of examples by ids",
+        "tags": [
+          "Example"
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "An array of unique identifiers for the examples to search.",
+              "example": [
+                "12345",
+                "67890"
+              ]
+            },
+            "description": "An array of unique identifiers for the examples to search."
+          },
+          {
+            "name": "brand",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional brand filter to narrow down the search results. If provided, it will filter examples by this brand.",
+              "example": "IAM"
+            },
+            "description": "Optional brand filter to narrow down the search results. If provided, it will filter examples by this brand."
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "An array of unique identifiers for the examples to search.",
+                    "example": [
+                      "12345",
+                      "67890"
+                    ]
+                  },
+                  "brand": {
+                    "type": "string",
+                    "description": "Optional brand filter to narrow down the search results. If provided, it will filter examples by this brand.",
+                    "example": "IAM"
+                  }
+                },
+                "required": [
+                  "ids"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK search response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ExampleCard"
+                          }
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "OK search response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error message",
+                          "example": "Error: error occurred"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "HTTP status code of the error",
+                          "example": 400
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Error response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error message",
+                          "example": "Error: error occurred"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "HTTP status code of the error",
+                          "example": 404
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Error response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/example/{id}": {
+      "get": {
+        "summary": "Get example by id",
+        "description": "Retrieves an example by id",
+        "tags": [
+          "Example"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "example shaw brand",
+              "example": "IAM"
+            }
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 10,
+              "description": "brand",
+              "example": "IAM"
+            },
+            "description": "brand"
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "OK detail response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "$ref": "#/components/schemas/ExampleDetail"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "OK detail response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error message",
+                          "example": "Error: something went wrong"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "HTTP status code of the error",
+                          "example": 400
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Error response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "type": "string",
+                      "description": "API version of the response",
+                      "example": "v1.0"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error message",
+                          "example": "Error: example not found"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "HTTP status code of the error",
+                          "example": 404
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Error response"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExampleCard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the example",
+            "example": "12345"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Brand of the example",
+            "example": "IAM"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the example",
+            "example": "Example Name"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "Current page number",
+            "example": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Number of items per page",
+            "example": 10
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "Total number of items available",
+            "example": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExampleDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the example",
+            "example": "12345"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Brand of the example",
+            "example": "IAM"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the example",
+            "example": "Example Name"
+          },
+          "image": {
+            "type": "string",
+            "description": "Image URL",
+            "example": "https://example.com/image.jpg"
+          }
+        },
+        "additionalProperties": false,
+        "description": "OK response"
+      }
+    }
+  }
+}

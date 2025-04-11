@@ -1,5 +1,5 @@
 import App from './app'
-import serverless from 'serverless-http'
+// import serverless from 'serverless-http'
 import ExampleRouter from './routers/exampleRouter'
 
 const port = 3001

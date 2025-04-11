@@ -6,7 +6,10 @@
   "scripts": {
     "start": "tsx --watch --no-cache src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:joi-types": "tsx ./scripts/generateJoiTypes.ts"
+    "lint": "eslint . --ext .ts",
+    "generate": "npm run generate:joi-types && npm run generate:swagger",
+    "generate:joi-types": "tsx ./scripts/generateJoiTypes.ts",
+    "generate:swagger": "tsx ./scripts/swagger/generateSwagger.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +18,9 @@
     "@types/node": "^22.13.11",
     "express": "^4.21.2",
     "joi": "^17.13.3",
+    "joi-to-swagger": "^6.2.0",
     "serverless-http": "^3.2.0",
+    "swagger-ui-express": "^5.0.1",
     "tsx": "^4.19.3",
     "vite": "^6.2.2"
   },

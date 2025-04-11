@@ -1,4 +1,9 @@
 import express from 'express'
+import {
+  formatDetailResponse,
+  formatErrorResponse,
+  formatSearchResponse,
+} from '../utils/responseFormats'
 
 export default class ExampleController {
   public static async getExample(
@@ -7,15 +12,11 @@ export default class ExampleController {
   ): Promise<void> {
     try {
       const { id } = req.params
-      res.status(200).json({
-        data: {
-          id,
-        },
-      })
-    } catch (error) { 
-      res.status(400).json({
-        error: (error as Error).message,
-      })
+      res.status(200).json(formatDetailResponse({ id }))
+    } catch (error) {
+      const status = error.status ?? 400
+      const message = error.message ?? 'An error occurred'
+      res.status(status).json(formatErrorResponse(message, status))
     }
   }
 
@@ -26,15 +27,19 @@ export default class ExampleController {
     try {
       const { ids } = req.body
       const newIds = ids.map((id) => ({ id }))
-      res.status(200).json({
-        data: {
-          examples: newIds,
-        },
-      })
+
+      res
+        .status(200)
+        .json(
+          formatSearchResponse(
+            { examples: newIds },
+            { page: 1, pageSize: 10, totalCount: newIds.length }
+          )
+        )
     } catch (error) {
-      res.status(400).json({
-        error: (error as Error).message,
-      })
+      const status = error.status ?? 400
+      const message = error.message ?? 'An error occurred'
+      res.status(status).json(formatErrorResponse(message, status))
     }
   }
 }
