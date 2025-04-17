@@ -2,21 +2,8 @@ import Joi from 'joi'
 import {
   formatErrorResponseSchema,
   formatSearchResponseSchema,
-} from './responseSchema'
-
-/**
- * Define schema for example card type. Make sure to 
- * export all schemas that you want to generate types for
- */
-export const ExampleCard = Joi.object({
-  id: Joi.string()
-    .example('12345')
-    .description('Unique identifier of the example'),
-  brand: Joi.string().example('IAM').description('Brand of the example'),
-  name: Joi.string().example('Example Name').description('Name of the example'),
-}).meta({
-  className: 'ExampleCard', // This will ensure the type is generated
-})
+} from '../response/responseSchema'
+import { ExampleCard } from './types'
 
 // Define all query, params, and body schemas for input validation
 const body = {

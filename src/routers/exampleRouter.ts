@@ -1,8 +1,8 @@
 import * as express from 'express'
 import ExampleController from '../controllers/exampleController'
 import { validateRequest } from '../validators/validateRequest'
-import { ExampleGetByIds } from '../schemas/exampleSearch'
-import { ExampleGetById } from '../schemas/exampleGetById'
+import { ExampleGetByIds } from '../schemas/example/exampleSearch'
+import { ExampleGetById } from '../schemas/example/exampleGetById'
 
 export default class ExampleRouter {
   public expressRouter = express.Router()

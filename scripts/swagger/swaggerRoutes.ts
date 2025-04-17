@@ -1,5 +1,5 @@
-import { ExampleGetById } from '../../src/schemas/exampleGetById'
-import { ExampleGetByIds } from '../../src/schemas/exampleSearch'
+import { ExampleGetById } from '../../src/schemas/example/exampleGetById'
+import { ExampleGetByIds } from '../../src/schemas/example/exampleSearch'
 import { registerRoute } from './registerRoutes'
 
 export const generateSwaggerRoutes = () => {

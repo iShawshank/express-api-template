@@ -3,28 +3,8 @@
  * Do not modify this file manually
  */
 
-import { Pagination } from '.';
-
-export interface ExampleCard {
-  /**
-   * Brand of the example
-   *
-   * @example IAM
-   */
-  brand?: string;
-  /**
-   * Unique identifier of the example
-   *
-   * @example 12345
-   */
-  id?: string;
-  /**
-   * Name of the example
-   *
-   * @example Example Name
-   */
-  name?: string;
-}
+import { Pagination } from '../response';
+import { ExampleCard } from '.';
 
 /**
  * Retrieves an array of examples by ids

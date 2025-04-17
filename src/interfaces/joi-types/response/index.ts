@@ -3,6 +3,4 @@
  * Do not modify this file manually
  */
 
-export * from './exampleGetById';
-export * from './exampleSearch';
 export * from './response';

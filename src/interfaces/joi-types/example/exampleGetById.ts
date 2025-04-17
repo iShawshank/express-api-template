@@ -3,35 +3,7 @@
  * Do not modify this file manually
  */
 
-/**
- * OK response
- */
-export interface ExampleDetail {
-  /**
-   * Brand of the example
-   *
-   * @example IAM
-   */
-  brand?: string;
-  /**
-   * Unique identifier of the example
-   *
-   * @example 12345
-   */
-  id?: string;
-  /**
-   * Image URL
-   *
-   * @example https://example.com/image.jpg
-   */
-  image?: string;
-  /**
-   * Name of the example
-   *
-   * @example Example Name
-   */
-  name?: string;
-}
+import { ExampleDetail } from '.';
 
 export interface ExampleGetById {
   params?: {
