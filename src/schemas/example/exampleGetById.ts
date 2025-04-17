@@ -10,7 +10,7 @@ const query = {
   brand: Joi.string().max(10).required().description('brand').example('IAM'),
 }
 const params = {
-  id: Joi.string().required().description('example shaw brand').example('IAM'),
+  id: Joi.string().required().description('ID of the example').example('1234'),
 }
 
 // Define responses schema for the route

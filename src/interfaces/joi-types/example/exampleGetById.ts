@@ -8,9 +8,9 @@ import { ExampleDetail } from '.';
 export interface ExampleGetById {
   params?: {
     /**
-     * example shaw brand
+     * ID of the example
      *
-     * @example IAM
+     * @example 1234
      */
     id: string;
   };

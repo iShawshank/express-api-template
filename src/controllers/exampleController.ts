@@ -4,6 +4,7 @@ import {
   formatErrorResponse,
   formatSearchResponse,
 } from '../utils/responseFormats'
+import ExampleService from '../services/exampleService'
 
 export default class ExampleController {
   public static async getExample(
@@ -12,7 +13,8 @@ export default class ExampleController {
   ): Promise<void> {
     try {
       const { id } = req.params
-      res.status(200).json(formatDetailResponse({ id }))
+      const example = await ExampleService.getExampleById(id)
+      res.status(200).json(formatDetailResponse(example))
     } catch (error) {
       const status = error.status ?? 400
       const message = error.message ?? 'An error occurred'
@@ -26,15 +28,16 @@ export default class ExampleController {
   ): Promise<void> {
     try {
       const { ids } = req.body
-      const newIds = ids.map((id) => ({ id }))
+      const examples = await ExampleService.searchExamplesByIds(ids)
 
       res
         .status(200)
         .json(
-          formatSearchResponse(
-            { examples: newIds },
-            { page: 1, pageSize: 10, totalCount: newIds.length }
-          )
+          formatSearchResponse(examples, {
+            page: 1,
+            pageSize: 10,
+            totalCount: examples.length,
+          })
         )
     } catch (error) {
       const status = error.status ?? 400

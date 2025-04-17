@@ -195,8 +195,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "example shaw brand",
-              "example": "IAM"
+              "description": "ID of the example",
+              "example": "1234"
             }
           },
           {
